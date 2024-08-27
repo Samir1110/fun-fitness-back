@@ -4,6 +4,7 @@ public class Admin {
     private Integer adminAccount;
     private String adminPassword;
 
+    // Getter and Setter methods
     public Integer getAdminAccount() {
         return adminAccount;
     }

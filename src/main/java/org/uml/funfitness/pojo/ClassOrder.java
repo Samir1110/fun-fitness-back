@@ -10,6 +10,10 @@ public class ClassOrder {
     private Integer memberAccount;
     private String classBegin;
 
+    public ClassOrder() {
+        // 无参构造函数
+    }
+
     public ClassOrder(Integer classId, String className, String coach, String memberName, Integer memberAccount, String classBegin) {
         this.classId = classId;
         this.className = className;

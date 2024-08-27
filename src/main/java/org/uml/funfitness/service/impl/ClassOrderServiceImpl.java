@@ -16,7 +16,11 @@ public class ClassOrderServiceImpl implements ClassOrderService {
 
     @Override
     public List<ClassOrder> findAll() {
-        return classOrderMapper.findAll();
+        List<ClassOrder> classOrders = classOrderMapper.findAll();
+        for (ClassOrder order : classOrders) {
+            System.out.println(order);
+        }
+        return classOrders;
     }
 
     @Override
@@ -26,7 +30,11 @@ public class ClassOrderServiceImpl implements ClassOrderService {
 
     @Override
     public List<ClassOrder> selectClassOrderByMemberAccount(Integer memberAccount) {
-        return classOrderMapper.selectClassOrderByMemberAccount(memberAccount);
+        List<ClassOrder> classOrders = classOrderMapper.selectClassOrderByMemberAccount(memberAccount);
+        for (ClassOrder order : classOrders) {
+            System.out.println(order);
+        }
+        return classOrders;
     }
 
     @Override
@@ -36,11 +44,17 @@ public class ClassOrderServiceImpl implements ClassOrderService {
 
     @Override
     public ClassOrder selectMemberByClassIdAndMemberAccount(Integer classId, Integer memberAccount) {
-        return classOrderMapper.selectMemberByClassIdAndMemberAccount(classId, memberAccount);
+        ClassOrder order = classOrderMapper.selectMemberByClassIdAndMemberAccount(classId, memberAccount);
+        System.out.println(order);
+        return order;
     }
 
     @Override
     public List<ClassOrder> selectMemberOrderList(Integer classId) {
-        return classOrderMapper.selectMemberOrderList(classId);
+        List<ClassOrder> classOrders = classOrderMapper.selectMemberOrderList(classId);
+        for (ClassOrder order : classOrders) {
+            System.out.println(order);
+        }
+        return classOrders;
     }
 }

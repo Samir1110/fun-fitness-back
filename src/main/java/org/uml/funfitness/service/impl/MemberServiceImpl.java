@@ -47,4 +47,9 @@ public class MemberServiceImpl implements MemberService {
     public List<Member> selectByMemberAccount(Integer memberAccount) {
         return memberMapper.selectByMemberAccount(memberAccount);
     }
+
+    @Override
+    public List<Member> findByAccount(Integer memberAccount) {
+        return memberMapper.findByMemberAccount(memberAccount);
+    }
 }

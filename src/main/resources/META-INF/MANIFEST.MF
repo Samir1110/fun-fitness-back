@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Main-Class: org.uml.funfitness.FunFitnessApplication
+Class-Path: spring-boot-devtools-3.3.1.jar spring-boot-starter-3.3.1.jar
+  spring-jcl-6.1.10.jar mybatis-spring-3.0.3.jar spring-context-6.1.10.j
+ ar spring-expression-6.1.10.jar spring-core-6.1.10.jar snakeyaml-2.2.ja
+ r micrometer-observation-1.13.1.jar logback-core-1.5.6.jar HikariCP-5.1
+ .0.jar logback-classic-1.5.6.jar slf4j-api-2.0.13.jar spring-boot-start
+ er-tomcat-3.3.1.jar jakarta.annotation-api-2.1.1.jar spring-boot-autoco
+ nfigure-3.3.1.jar micrometer-commons-1.13.1.jar tomcat-embed-el-10.1.25
+ .jar log4j-api-2.23.1.jar spring-webmvc-6.1.10.jar mybatis-3.5.14.jar j
+ ackson-databind-2.17.1.jar mybatis-spring-boot-starter-3.0.3.jar jackso
+ n-module-parameter-names-2.17.1.jar spring-boot-starter-jdbc-3.3.1.jar 
+ spring-jdbc-6.1.10.jar jackson-annotations-2.17.1.jar jackson-datatype-
+ jdk8-2.17.1.jar spring-boot-starter-web-3.3.1.jar jul-to-slf4j-2.0.13.j
+ ar spring-aop-6.1.10.jar mysql-connector-j-8.3.0.jar spring-boot-starte
+ r-logging-3.3.1.jar log4j-to-slf4j-2.23.1.jar spring-boot-3.3.1.jar spr
+ ing-tx-6.1.10.jar spring-boot-starter-json-3.3.1.jar jackson-datatype-j
+ sr310-2.17.1.jar jackson-core-2.17.1.jar tomcat-embed-core-10.1.25.jar 
+ tomcat-embed-websocket-10.1.25.jar spring-web-6.1.10.jar mybatis-spring
+ -boot-autoconfigure-3.0.3.jar spring-beans-6.1.10.jar
+

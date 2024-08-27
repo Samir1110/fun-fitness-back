@@ -19,14 +19,17 @@ class FunFitnessApplicationTests {
 	@Test
 	void contextLoads() {
 
-		gymMapper.insertGymPeopleNumber(1);
+//		gymMapper.insertGymPeopleNumber(202009867);
+//		gymMapper.insertGymPeopleNumber(202100788);
+//		gymMapper.insertGymPeopleNumber(202106725);
+//		gymMapper.deleteGymPeopleNumber(202176587);
 
 		List<Gym> list = gymMapper.findAll();
 
 		for (Gym member : list) {
 			System.out.println(member);
 		}
-
+		System.out.println(gymMapper.selectGymPeopleNumber());
 	}
 
 }

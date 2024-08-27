@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.uml.funfitness.mapper.ProductMapper">
+
+    <insert id="addProduct" parameterType="org.uml.funfitness.pojo.Product">
+        INSERT INTO product (product_id, product_name, product_price, product_quantity)
+        VALUES (#{productID}, #{productName}, #{productPrice}, #{productQuantity})
+    </insert>
+
+    <update id="updateProduct" parameterType="org.uml.funfitness.pojo.Product">
+        UPDATE product
+        SET product_name = #{productName},
+            product_price = #{productPrice},
+            product_quantity = #{productQuantity}
+        WHERE product_id = #{productID}
+    </update>
+
+    <select id="findAll" resultType="org.uml.funfitness.pojo.Product">
+        SELECT *
+        FROM product
+    </select>
+
+    <delete id="deleteProduct" parameterType="java.lang.Integer">
+        DELETE FROM product
+        WHERE product_id = #{productID}
+    </delete>
+
+    <select id="findByProductId" parameterType="java.lang.Integer" resultType="org.uml.funfitness.pojo.Product">
+        SELECT *
+        FROM product
+        WHERE product_id = #{productID}
+    </select>
+</mapper>

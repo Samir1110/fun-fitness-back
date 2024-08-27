@@ -1,3 +1,6 @@
+USE gym_management_system;
+
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -95,24 +98,25 @@ CREATE TABLE `member`  (
   `card_time` date NULL DEFAULT NULL COMMENT '办卡时间',
   `card_class` int NULL DEFAULT NULL COMMENT '购买课时',
   `card_next_class` int NULL DEFAULT NULL COMMENT '剩余课时',
+  `member_credit` int NULL DEFAULT NULL COMMENT '会员积分',
   PRIMARY KEY (`member_account`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of member
 -- ----------------------------
-INSERT INTO `member` VALUES (202009867, '123456', '张三', '女', 24, 182, 60, 13515548482, '2020-06-05', 40, 40);
-INSERT INTO `member` VALUES (202100788, '123456', '李四', '男', 31, 178, 60, 13131554873, '2021-01-01', 50, 50);
-INSERT INTO `member` VALUES (202132539, '123456', '王五', '男', 31, 178, 60, 13154875489, '2021-01-01', 40, 40);
-INSERT INTO `member` VALUES (202186416, '123456', '马六', '女', 23, 160, 45, 13124576857, '2021-01-16', 30, 30);
-INSERT INTO `member` VALUES (202106725, '123456', 'Tom', '男', 24, 178, 88, 13758784959, '2021-02-26', 30, 30);
-INSERT INTO `member` VALUES (202183406, '123456', 'Tylor', '女', 19, 170, 60, 13786457488,'2021-02-27', 30, 30);
-INSERT INTO `member` VALUES (202176587, '123456', 'Jack', '男', 33, 177, 90, 13767546666, '2021-02-27', 30, 30);
-INSERT INTO `member` VALUES (202156754, '123456', 'Mike', '男', 36, 166, 67, 13786532448, '2021-02-28', 30, 30);
-INSERT INTO `member` VALUES (202153468, '123456', 'Emma', '女', 25, 173, 44, 13786457124,  '2021-03-01', 50, 50);
-INSERT INTO `member` VALUES (202121345, '123456', 'Ava', '女', 28, 160, 40, 13754457488, '2021-03-02', 30, 30);
-INSERT INTO `member` VALUES (202189776, '123456', 'Chloe', '女', 27, 170, 50, 13986337489,  '2021-03-23', 30, 30);
-INSERT INTO `member` VALUES (202123664, '123456', 'Lily', '女', 25, 165, 51, 15986457423,  '2021-03-27', 30, 30);
+INSERT INTO `member` VALUES (202009867, '123456', '张三', '女', 24, 182, 60, 13515548482, '2020-06-05', 40, 40, 50);
+INSERT INTO `member` VALUES (202100788, '123456', '李四', '男', 31, 178, 60, 13131554873, '2021-01-01', 50, 50, 50);
+INSERT INTO `member` VALUES (202132539, '123456', '王五', '男', 31, 178, 60, 13154875489, '2021-01-01', 40, 40, 50);
+INSERT INTO `member` VALUES (202186416, '123456', '马六', '女', 23, 160, 45, 13124576857, '2021-01-16', 30, 30, 50);
+INSERT INTO `member` VALUES (202106725, '123456', 'Tom', '男', 24, 178, 88, 13758784959, '2021-02-26', 30, 30, 50);
+INSERT INTO `member` VALUES (202183406, '123456', 'Tylor', '女', 19, 170, 60, 13786457488,'2021-02-27', 30, 30, 50);
+INSERT INTO `member` VALUES (202176587, '123456', 'Jack', '男', 33, 177, 90, 13767546666, '2021-02-27', 30, 30, 50);
+INSERT INTO `member` VALUES (202156754, '123456', 'Mike', '男', 36, 166, 67, 13786532448, '2021-02-28', 30, 30, 50);
+INSERT INTO `member` VALUES (202153468, '123456', 'Emma', '女', 25, 173, 44, 13786457124,  '2021-03-01', 50, 50, 50);
+INSERT INTO `member` VALUES (202121345, '123456', 'Ava', '女', 28, 160, 40, 13754457488, '2021-03-02', 30, 30, 50);
+INSERT INTO `member` VALUES (202189776, '123456', 'Chloe', '女', 27, 170, 50, 13986337489,  '2021-03-23', 30, 30, 50);
+INSERT INTO `member` VALUES (202123664, '123456', 'Lily', '女', 25, 165, 51, 15986457423,  '2021-03-27', 30, 30, 50);
 
 -- ----------------------------
 -- Table structure for employee
@@ -166,11 +170,41 @@ INSERT INTO `equipment` VALUES (7, '杠铃2', '1号房间', '正常', '');
 -- ----------------------------
 -- Table structure for gym
 -- ----------------------------
+DROP TABLE IF EXISTS `gym`;
 CREATE TABLE gym (
     member_account int NOT NULL COMMENT '会员账号',
     member_name varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '会员姓名',
     time TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '进入时间'
 )ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
+-- ----------------------------
+-- Records of gym
+-- ----------------------------
+INSERT INTO `gym` (member_account, member_name) VALUES (202106725,'Tom');
+INSERT INTO `gym` (member_account, member_name) VALUES (202100788,'李四');
+INSERT INTO `gym` (member_account, member_name) VALUES (202009867,'张三');
+
+-- ----------------------------
+-- Table structure for product
+-- ----------------------------
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE product (
+                     product_id int NOT NULL COMMENT '商品id',
+                     product_name varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+                     product_price int NOT NULL COMMENT '商品价格',
+                     product_quantity int NOT NULL COMMENT '商品数量',
+                     PRIMARY KEY (`product_id`) USING BTREE
+)ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of product
+-- ----------------------------
+INSERT INTO `product` VALUES (1, '护腕', 20, 50);
+INSERT INTO `product` VALUES (2, '护膝', 30, 40);
+INSERT INTO `product` VALUES (3, '手臂保护', 40, 60);
+INSERT INTO `product` VALUES (4, '踝关节保护', 30, 40);
+INSERT INTO `product` VALUES (5, '运动饮料', 5, 100);
+INSERT INTO `product` VALUES (6, '纯净水', 3, 50);
+INSERT INTO `product` VALUES (7, '毛巾', 10, 50);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -4,17 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.uml.funfitness.mapper.ClassOrderMapper">
 
-    <select id="findAll" resultType="classOrder">
+    <!-- 定义结果映射 -->
+    <resultMap id="ClassOrderResultMap" type="org.uml.funfitness.pojo.ClassOrder">
+        <id property="classOrderId" column="class_order_id"/>
+        <result property="classId" column="class_id"/>
+        <result property="className" column="class_name"/>
+        <result property="coach" column="coach"/>
+        <result property="memberName" column="member_name"/>
+        <result property="memberAccount" column="member_account"/>
+        <result property="classBegin" column="class_begin"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="ClassOrderResultMap">
         SELECT *
         FROM class_order
     </select>
 
-    <insert id="insertClassOrder" parameterType="classOrder">
+    <insert id="insertClassOrder" parameterType="org.uml.funfitness.pojo.ClassOrder">
         INSERT INTO class_order(class_order_id, class_id, class_name, coach, member_name, member_account, class_begin)
         VALUES (#{classOrderId}, #{classId}, #{className}, #{coach}, #{memberName}, #{memberAccount}, #{classBegin})
     </insert>
 
-    <select id="selectClassOrderByMemberAccount" parameterType="java.lang.Integer" resultType="classOrder">
+    <select id="selectClassOrderByMemberAccount" parameterType="java.lang.Integer" resultMap="ClassOrderResultMap">
         SELECT *
         FROM class_order
         WHERE member_account = #{memberAccount}
@@ -26,18 +37,17 @@
         WHERE class_order_id = #{classOrderId}
     </delete>
 
-    <select id="selectMemberByClassIdAndMemberAccount" parameterType="java.lang.Integer" resultType="classOrder">
+    <select id="selectMemberByClassIdAndMemberAccount" parameterType="java.util.Map" resultMap="ClassOrderResultMap">
         SELECT *
         FROM class_order
         WHERE class_id = #{classId}
           AND member_account = #{memberAccount}
     </select>
 
-    <select id="selectMemberOrderList" parameterType="java.lang.Integer" resultType="classOrder">
+    <select id="selectMemberOrderList" parameterType="java.lang.Integer" resultMap="ClassOrderResultMap">
         SELECT *
         FROM class_order
         WHERE class_id = #{classId}
     </select>
-
 
 </mapper>

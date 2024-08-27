@@ -12,7 +12,7 @@ public class Member {
     private String cardTime;
     private Integer cardClass;
     private Integer cardNextClass;
-
+    private Integer memberCredit;
     public Integer getMemberAccount() {
         return memberAccount;
     }
@@ -101,6 +101,13 @@ public class Member {
         this.cardNextClass = cardNextClass;
     }
 
+    public Integer getMemberCredit() {
+        return memberCredit;
+    }
+
+    public void setMemberCredit(Integer memberCredit) {
+        this.memberCredit = memberCredit;
+    }
     @Override
     public String toString() {
         return "Member{" +
@@ -115,6 +122,7 @@ public class Member {
                 ", cardTime='" + cardTime + '\'' +
                 ", cardClass=" + cardClass +
                 ", cardNextClass=" + cardNextClass +
+                ", memberCredit=" + memberCredit +
                 '}';
     }
 }

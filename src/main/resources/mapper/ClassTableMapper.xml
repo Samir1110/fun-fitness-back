@@ -32,5 +32,12 @@
         WHERE class_id = #{classId}
     </delete>
 
+    <update id="updateClassTable" parameterType="classTable">
+        UPDATE class_table
+        SET class_begin = #{classBegin},
+            class_time = #{classTime},
+            coach = #{coach}
+        WHERE class_id = #{classId}
+    </update>
 
 </mapper>

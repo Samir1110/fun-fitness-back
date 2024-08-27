@@ -20,4 +20,6 @@ public interface ClassTableService {
 
     //根据 id 删除已预约的课程
     Boolean deleteOrderByClassId(Integer classId);
+
+    Boolean updateClassTable(ClassTable classTable);
 }

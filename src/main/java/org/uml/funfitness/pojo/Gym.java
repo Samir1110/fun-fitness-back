@@ -24,6 +24,10 @@ public class Gym {
         this.memberName = memberName;
     }
 
+    public Time getTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
         return "Gym{" +

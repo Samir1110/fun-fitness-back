@@ -2,8 +2,8 @@ package org.uml.funfitness.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.uml.funfitness.pojo.Employee;
 import org.uml.funfitness.pojo.Member;
 import org.uml.funfitness.service.MemberService;
 
@@ -21,21 +21,15 @@ public class MemberController {
 
     //查询会员
     @RequestMapping("/selMember")
-    public String selectMember(Model model) {
+    public List<Member> selectMember(Model model) {
         List<Member> memberList = memberService.findAll();
-        model.addAttribute("memberList", memberList);
-        return "selectMember";
+        return memberList;
     }
 
-    //跳转新增会员页面
-    @RequestMapping("/toAddMember")
-    public String toAddMember() {
-        return "addMember";
-    }
 
     //新增会员
-    @RequestMapping("/addMember")
-    public String addMember(Member member) {
+    @RequestMapping(value = "/addMember", method = RequestMethod.POST)
+    public String addMember(@RequestBody Member member) {
         //会员账号&卡号随机生成
         Random random = new Random();
         String account1 = "2024";
@@ -58,41 +52,27 @@ public class MemberController {
         member.setMemberPassword(password);
         member.setCardTime(nowDay);
         member.setCardNextClass(nextClass);
-
+        System.out.println(member.getMemberCredit());
         memberService.insertMember(member);
-
         return "redirect:selMember";
 
     }
 
     //删除会员
-    @RequestMapping("/delMember")
-    public String deleteMember(Integer memberAccount) {
+    @RequestMapping(value = "/delMember", method = RequestMethod.POST)
+    public String deleteMember(@RequestParam("memberAccount") Integer memberAccount) {
         memberService.deleteByMemberAccount(memberAccount);
         return "redirect:selMember";
     }
 
-    //跳转会员修改页面
-    @RequestMapping("/toUpdateMember")
-    public String toUpdateMember(Integer memberAccount, Model model) {
-        List<Member> memberList = memberService.selectByMemberAccount(memberAccount);
-        model.addAttribute("memberList", memberList);
-        return "updateMember";
-    }
 
     //修改会员信息
-    @RequestMapping("/updateMember")
-    public String updateMember(Member member) {
+    @RequestMapping(value = "/updateMember", method = RequestMethod.POST)
+    public String updateMember(@RequestBody Member member) {
         memberService.updateMemberByMemberAccount(member);
         return "redirect:selMember";
     }
 
-
-    //跳转会员卡查询页面
-    @RequestMapping("/toSelByCard")
-    public String toSelectByCardId() {
-        return "selectByMemberAccount";
-    }
 
     //根据会员卡号查询
     @RequestMapping("/selByCard")
